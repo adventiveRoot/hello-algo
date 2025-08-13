@@ -6,57 +6,57 @@
 
 #include "../utils/common.hpp"
 
-/* éšæœºè®¿é—®å…ƒç´  */
+/* Ëæ»ú·ÃÎÊÔªËØ */
 int randomAccess(int *nums, int size) {
-    // åœ¨åŒºé—´ [0, size) ä¸­éšæœºæŠ½å–ä¸€ä¸ªæ•°å­—
+    // ÔÚÇø¼ä [0, size) ÖĞËæ»ú³éÈ¡Ò»¸öÊı×Ö
     int randomIndex = rand() % size;
-    // è·å–å¹¶è¿”å›éšæœºå…ƒç´ 
+    // »ñÈ¡²¢·µ»ØËæ»úÔªËØ
     int randomNum = nums[randomIndex];
     return randomNum;
 }
 
-/* æ‰©å±•æ•°ç»„é•¿åº¦ */
+/* À©Õ¹Êı×é³¤¶È */
 int *extend(int *nums, int size, int enlarge) {
-    // åˆå§‹åŒ–ä¸€ä¸ªæ‰©å±•é•¿åº¦åçš„æ•°ç»„
+    // ³õÊ¼»¯Ò»¸öÀ©Õ¹³¤¶ÈºóµÄÊı×é
     int *res = new int[size + enlarge];
-    // å°†åŸæ•°ç»„ä¸­çš„æ‰€æœ‰å…ƒç´ å¤åˆ¶åˆ°æ–°æ•°ç»„
+    // ½«Ô­Êı×éÖĞµÄËùÓĞÔªËØ¸´ÖÆµ½ĞÂÊı×é
     for (int i = 0; i < size; i++) {
         res[i] = nums[i];
     }
-    // é‡Šæ”¾å†…å­˜
+    // ÊÍ·ÅÄÚ´æ
     delete[] nums;
-    // è¿”å›æ‰©å±•åçš„æ–°æ•°ç»„
+    // ·µ»ØÀ©Õ¹ºóµÄĞÂÊı×é
     return res;
 }
 
-/* åœ¨æ•°ç»„çš„ç´¢å¼• index å¤„æ’å…¥å…ƒç´  num */
+/* ÔÚÊı×éµÄË÷Òı index ´¦²åÈëÔªËØ num */
 void insert(int *nums, int size, int num, int index) {
-    // æŠŠç´¢å¼• index ä»¥åŠä¹‹åçš„æ‰€æœ‰å…ƒç´ å‘åç§»åŠ¨ä¸€ä½
+    // °ÑË÷Òı index ÒÔ¼°Ö®ºóµÄËùÓĞÔªËØÏòºóÒÆ¶¯Ò»Î»
     for (int i = size - 1; i > index; i--) {
         nums[i] = nums[i - 1];
     }
-    // å°† num èµ‹ç»™ index å¤„çš„å…ƒç´ 
+    // ½« num ¸³¸ø index ´¦µÄÔªËØ
     nums[index] = num;
 }
 
-/* åˆ é™¤ç´¢å¼• index å¤„çš„å…ƒç´  */
+/* É¾³ıË÷Òı index ´¦µÄÔªËØ */
 void remove(int *nums, int size, int index) {
-    // æŠŠç´¢å¼• index ä¹‹åçš„æ‰€æœ‰å…ƒç´ å‘å‰ç§»åŠ¨ä¸€ä½
+    // °ÑË÷Òı index Ö®ºóµÄËùÓĞÔªËØÏòÇ°ÒÆ¶¯Ò»Î»
     for (int i = index; i < size - 1; i++) {
         nums[i] = nums[i + 1];
     }
 }
 
-/* éå†æ•°ç»„ */
+/* ±éÀúÊı×é */
 void traverse(int *nums, int size) {
     int count = 0;
-    // é€šè¿‡ç´¢å¼•éå†æ•°ç»„
+    // Í¨¹ıË÷Òı±éÀúÊı×é
     for (int i = 0; i < size; i++) {
         count += nums[i];
     }
 }
 
-/* åœ¨æ•°ç»„ä¸­æŸ¥æ‰¾æŒ‡å®šå…ƒç´  */
+/* ÔÚÊı×éÖĞ²éÕÒÖ¸¶¨ÔªËØ */
 int find(int *nums, int size, int target) {
     for (int i = 0; i < size; i++) {
         if (nums[i] == target)
@@ -67,45 +67,45 @@ int find(int *nums, int size, int target) {
 
 /* Driver Code */
 int main() {
-    /* åˆå§‹åŒ–æ•°ç»„ */
+    /* ³õÊ¼»¯Êı×é */
     int size = 5;
     int *arr = new int[size];
-    cout << "æ•°ç»„ arr = ";
+    cout << "Êı×é arr = ";
     printArray(arr, size);
 
     int *nums = new int[size]{1, 3, 2, 5, 4};
-    cout << "æ•°ç»„ nums = ";
+    cout << "Êı×é nums = ";
     printArray(nums, size);
 
-    /* éšæœºè®¿é—® */
+    /* Ëæ»ú·ÃÎÊ */
     int randomNum = randomAccess(nums, size);
-    cout << "åœ¨ nums ä¸­è·å–éšæœºå…ƒç´  " << randomNum << endl;
+    cout << "ÔÚ nums ÖĞ»ñÈ¡Ëæ»úÔªËØ " << randomNum << endl;
 
-    /* é•¿åº¦æ‰©å±• */
+    /* ³¤¶ÈÀ©Õ¹ */
     int enlarge = 3;
     nums = extend(nums, size, enlarge);
     size += enlarge;
-    cout << "å°†æ•°ç»„é•¿åº¦æ‰©å±•è‡³ 8 ï¼Œå¾—åˆ° nums = ";
+    cout << "½«Êı×é³¤¶ÈÀ©Õ¹ÖÁ 8 £¬µÃµ½ nums = ";
     printArray(nums, size);
 
-    /* æ’å…¥å…ƒç´  */
+    /* ²åÈëÔªËØ */
     insert(nums, size, 6, 3);
-    cout << "åœ¨ç´¢å¼• 3 å¤„æ’å…¥æ•°å­— 6 ï¼Œå¾—åˆ° nums = ";
+    cout << "ÔÚË÷Òı 3 ´¦²åÈëÊı×Ö 6 £¬µÃµ½ nums = ";
     printArray(nums, size);
 
-    /* åˆ é™¤å…ƒç´  */
+    /* É¾³ıÔªËØ */
     remove(nums, size, 2);
-    cout << "åˆ é™¤ç´¢å¼• 2 å¤„çš„å…ƒç´ ï¼Œå¾—åˆ° nums = ";
+    cout << "É¾³ıË÷Òı 2 ´¦µÄÔªËØ£¬µÃµ½ nums = ";
     printArray(nums, size);
 
-    /* éå†æ•°ç»„ */
+    /* ±éÀúÊı×é */
     traverse(nums, size);
 
-    /* æŸ¥æ‰¾å…ƒç´  */
+    /* ²éÕÒÔªËØ */
     int index = find(nums, size, 3);
-    cout << "åœ¨ nums ä¸­æŸ¥æ‰¾å…ƒç´  3 ï¼Œå¾—åˆ°ç´¢å¼• = " << index << endl;
+    cout << "ÔÚ nums ÖĞ²éÕÒÔªËØ 3 £¬µÃµ½Ë÷Òı = " << index << endl;
 
-    // é‡Šæ”¾å†…å­˜
+    // ÊÍ·ÅÄÚ´æ
     delete[] arr;
     delete[] nums;
 
